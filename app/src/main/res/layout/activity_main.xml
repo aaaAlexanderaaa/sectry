@@ -15,28 +15,22 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#000000"
         android:textSize="27sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintBottom_toTopOf="@+id/sec_game_begin"
+        app:layout_constraintEnd_toEndOf="@+id/thi_game_begin"
+        app:layout_constraintStart_toStartOf="@+id/thi_game_begin"
+        app:layout_constraintTop_toBottomOf="@+id/thi_game_begin" />
 
     <Button
         android:id="@+id/introduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:background="@drawable/btn_radius"
         android:text="玩法说明"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sec_game_begin"
         app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintStart_toStartOf="@+id/sec_game_begin"
+        app:layout_constraintTop_toBottomOf="@+id/sec_game_begin" />
 
     <Button
         android:id="@+id/sec_game_begin"
@@ -54,10 +48,28 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/game_begin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
         app:srcCompat="@drawable/point24" />
+
+    <Button
+        android:id="@+id/thi_game_begin"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_radius"
+        android:text="普通模式"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.32999998" />
 
 </android.support.constraint.ConstraintLayout>

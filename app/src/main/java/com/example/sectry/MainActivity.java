@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private Button lets_begin;
     private Button introduce;
     private Button sec_begin;
+    private Button thi_begin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
-
+        thi_begin=(Button)findViewById(R.id.thi_game_begin);
+        thi_begin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ThigameActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
     }
 }

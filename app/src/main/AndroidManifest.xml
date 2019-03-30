@@ -19,6 +19,7 @@
         <activity android:name=".IntroduceActivity"/>
         <activity android:name=".GameActivity"/>
         <activity android:name=".SecgameActivity"/>
+        <activity android:name=".ThigameActivity"/>
     </application>
 
 </manifest>

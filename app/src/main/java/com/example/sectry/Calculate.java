@@ -183,6 +183,7 @@ public class Calculate {
         }
         return 0;
     }
+
     public static float eval(String string) {
         Calculate calculate = new Calculate();
         ArrayList result = calculate.getStringList(string);  //String转换为List
