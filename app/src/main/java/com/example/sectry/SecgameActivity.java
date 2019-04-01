@@ -139,7 +139,6 @@ public class SecgameActivity extends AppCompatActivity {
                 time.setText(text1+" : "+text2);
                 if(millisUntilFinished<(maxtime-3)*1000){
                     playscore.setText("");
-                    information.setText("");
                 }
                 if((millisUntilFinished/1000-quenum)==0){
                     time.setText("00 : 00");
@@ -157,7 +156,7 @@ public class SecgameActivity extends AppCompatActivity {
                 submit.performClick();
             }
         };
-        final CountDownTimer bigintimer = new CountDownTimer(4*1000, 10) {
+        final CountDownTimer begintimer = new CountDownTimer(4*1000, 10) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // TODO Auto-generated method stub
@@ -232,46 +231,46 @@ public class SecgameActivity extends AppCompatActivity {
                             editText2.getText().toString().isEmpty()||editText1.getText().toString().isEmpty()){
                         information.setText("请不要提交空字符串");
                     }
+                    else {
+                        int[] unknow = {Integer.valueOf(editText1.getText().toString()), Integer.valueOf(editText2.getText().toString()),
+                                Integer.valueOf(editText3.getText().toString()), Integer.valueOf(editText4.getText().toString())};
 
-                    int[] unknow={Integer.valueOf(editText1.getText().toString()),Integer.valueOf(editText2.getText().toString()),
-                            Integer.valueOf(editText3.getText().toString()),Integer.valueOf(editText4.getText().toString())};
-
-                    int kk=0;
-                    int[] knowm=correctnum.clone();
-                    for (int i=0;i<4;i++){
-                        for(int j=0;j<8;j++){
-                            if(unknow[i]==knowm[j]){
-                                knowm[j]=0;
-                                kk=1;
-                                break;
+                        int kk = 0;
+                        int[] knowm = correctnum.clone();
+                        for (int i = 0; i < 4; i++) {
+                            for (int j = 0; j < 8; j++) {
+                                if (unknow[i] == knowm[j]) {
+                                    knowm[j] = 0;
+                                    kk = 1;
+                                    break;
+                                }
                             }
+                            if (kk == 0) {
+                                information.setText("你输入的数字好像出错啦");
+                                return;
+                            }
+                            kk = 0;
                         }
-                        if(kk==0){
-                            information.setText("你输入的数字好像出错啦");
-                            return;
-                        }
-                        kk=0;
-                    }
 
-                    float result;
-                    try{
-                        result = (float)Calculate.eval(submitstr);
-                        if(result==24){
-                            information.setText("恭喜你！答对了！");
-                            playscore.setText("Nice!");
-                            scorenum+=1;
-                            score.setText(setscorestr());
-                            resetgamemood();
-                            submit.performClick();
-                        }
-                        else {
+                        float result;
+                        try {
+                            result = (float) Calculate.eval(submitstr);
+                            if (result == 24) {
+                                information.setText("恭喜你！答对了！");
+                                playscore.setText("Nice!");
+                                scorenum += 1;
+                                score.setText(setscorestr());
+                                resetgamemood();
+                                submit.performClick();
+                            } else {
+                                information.setText("很遗憾，你的答案或许有点问题。");
+
+                                resetgamemood();
+                                submit.performClick();
+                            }
+                        } catch (Exception e) {
                             information.setText("很遗憾，你的答案或许有点问题。");
-
-                            resetgamemood();
-                            submit.performClick();
                         }
-                    }catch (Exception e){
-                        information.setText("很遗憾，你的答案或许有点问题。");
                     }
                 }
             }

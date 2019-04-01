@@ -82,6 +82,7 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+
                 timelimit.setText("00 : 00");
             }
         };
@@ -114,30 +115,33 @@ public class GameActivity extends AppCompatActivity {
         showone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer.cancel();
-                answerview.setText("");
-                answerview.append(create4card.answerList.get(0).toString());
+                if(gamemood==1) {
+                    timer.cancel();
+                    answerview.setText("");
+                    answerview.append(create4card.answerList.get(0).toString());
+                }
             }
         });
         showall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer.cancel();
-                if(create4card.answerList.size()>1) {
-                    answerview.setText("");
-                    int i = 0;
-                    for (i = 0; i + 1 < create4card.answerList.size(); i += 2) {
-                        answerview.append(create4card.answerList.get(i).toString());
-                        answerview.append("\t\t\t");
-                        answerview.append(create4card.answerList.get(i + 1).toString());
-                        answerview.append("\n");
+                if(gamemood==1) {
+                    timer.cancel();
+                    if (create4card.answerList.size() > 1) {
+                        answerview.setText("");
+                        int i = 0;
+                        for (i = 0; i + 1 < create4card.answerList.size(); i += 2) {
+                            answerview.append(create4card.answerList.get(i).toString());
+                            answerview.append("\t\t\t");
+                            answerview.append(create4card.answerList.get(i + 1).toString());
+                            answerview.append("\n");
+                        }
+                        if (i - 1 < create4card.answerList.size()) {
+                            answerview.append(create4card.answerList.get(i - 1).toString());
+                        }
+                    } else {
+                        showone.performClick();
                     }
-                    if (i - 1 < create4card.answerList.size()) {
-                        answerview.append(create4card.answerList.get(i - 1).toString());
-                    }
-                }
-                else {
-                    showone.performClick();
                 }
             }
         });

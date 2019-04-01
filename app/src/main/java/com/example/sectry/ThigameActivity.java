@@ -42,6 +42,12 @@ public class ThigameActivity extends AppCompatActivity {
 
         resetGamemood();
 
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText("");
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,18 +83,23 @@ public class ThigameActivity extends AppCompatActivity {
                 }
 
                 else if(gamemood==1){
+                    textView.setText("");
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(editText.getWindowToken(), 0) ;//每提交一次答案收回一次软键盘
 
                     String submit=editText.getText().toString();
                     if(!submit.isEmpty()){
                         if(iscorrert(submit,create4card)==0){
-                            if(Calculate.eval(submit)==24.0){
-                                textView.setText("Congratulation!");
-                                resetGamemood();
-                            }
-                            else {
-                                textView.setText("Incorrect!");
+                            try {
+                                if(Calculate.eval(submit)==24.0){
+                                    textView.setText("Congratulation!");
+                                    resetGamemood();
+                                }
+                                else {
+                                    textView.setText("Incorrect!");
+                                }
+                            }catch (Exception e){
+                                textView.setText("You input is illegal!");
                             }
                         }
                         else {
@@ -119,7 +130,7 @@ public class ThigameActivity extends AppCompatActivity {
     private int iscorrert(String string,Create4card create4card){
         string+=" ";
         char[] correctch ={'+','-','*','/','1','2','3','4','5','6','7','8','9','0',' ','(',')'};
-        int[] known=create4card.num;
+        int[] known=create4card.num.clone();
         if(string.isEmpty()){
             return 4;//空字符串
         }

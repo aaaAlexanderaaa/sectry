@@ -55,9 +55,6 @@ public class Calculate {
 
     /**
      * 将中缀表达式转化为后缀表达式
-     *
-     * @param inOrderList
-     * @return
      */
     public ArrayList<String> getPostOrder(ArrayList<String> inOrderList) {
 
@@ -94,9 +91,6 @@ public class Calculate {
 
     /**
      * 计算后缀表达式
-     *
-     * @param postOrder
-     * @return
      */
     public float calculate(ArrayList<String> postOrder) {
         Stack stack = new Stack();
@@ -129,10 +123,6 @@ public class Calculate {
 
     /**
      * 比较运算符等级
-     *
-     * @param peek
-     * @param cur
-     * @return
      */
     public boolean compare(String peek, String cur) {
         if ("*".equals(peek) && ("/".equals(cur) || "*".equals(cur) || "+".equals(cur) || "-".equals(cur))) {
